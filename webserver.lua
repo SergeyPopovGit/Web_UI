@@ -17,8 +17,9 @@ led1 = 17
 gpio.mode(led1,gpio.OUTPUT)
 adcpin = 1 -- set to 0 if you don't want to show adc measurement
 
+
 function webrecv(clt, d)
-	--print("[RECEIVED:\r\n"..d.."]") 
+	print("[RECEIVED:\r\n"..d.."]") 
 	local buf, method, vars, _GET, _on, resp, _v, _vs
 	_vs = ""
 	if adcpin > 0 then
@@ -34,7 +35,7 @@ function webrecv(clt, d)
 	end
 	_GET = {}
 	if (vars ~= nil) then
-		--print("VARS: ["..vars.."]")
+		print("VARS: ["..vars.."]")
 		for k, v in string.gmatch(vars, "(%w+)=(%w+)&*") do
 			_GET[k] = v
 		end
@@ -66,13 +67,18 @@ function webrecv(clt, d)
 	resp = "HTTP/1.1 200 OK\r\nServer: WiFiMCU\r\nContent-Type:text/html\r\nContent-Length: "
 	resp = resp..tostring(string.len(buf)).."\r\nConnection: close\r\n\r\n"..buf
 	net.send(clt, resp)
+	print ("responce: "..resp)
 	collectgarbage()
 end
 
 net.on(webskt,"receive", webrecv)
+
 net.on(webskt,"accept", function(clt,ip,port) print("ACCEPT: "..ip..":"..port..", clt: "..clt) end)
+
 --net.on(webskt,"sent", function(clt) print("SENT") net.close(clt) end)
-net.on(webskt,"sent", function(clt) net.close(clt) end)
+--net.on(webskt,"sent", function(clt) net.close(clt) print("Sent is ended close socket: "..clt)end)
+
+net.on(webskt,"disconnect", function(clt) net.close(clt) print("Socket closed from client, Close: "..clt)end)
 
 webport = 80 -- port on which the web server will listen
 local stat = net.start(webskt, webport) 
