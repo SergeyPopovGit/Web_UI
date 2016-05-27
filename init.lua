@@ -5,7 +5,7 @@ if gpio.read(0) ~= 0 then --Start if BOOT button didt'n push in delay time after
 	--do init actions
 	 print('Initialization begin')
 	dofile('wifi.lua')
-	dofile('webserver.lua')
+	dofile('http_parser.lua')
 else
 
 	print('Initialization pass')

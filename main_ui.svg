@@ -1,0 +1,31 @@
+<svg width="500" height="500">
+    <path
+       style="fill:#80e5ff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d="M 250 0 C 111.92882 3.7895613e-14 0 111.92882 0 250 C -1.249508e-14 341.05067 48.689713 420.72528 121.4375 464.4375 L 154.625 409.40625 C 100.50052 376.95218 64.28125 317.69934 64.28125 250 C 64.28125 147.43284 147.43284 64.28125 250 64.28125 C 352.56716 64.28125 435.71875 147.43284 435.71875 250 C 435.71875 317.53896 399.66155 376.65256 345.75 409.15625 L 378.71875 464.34375 C 451.37991 420.61135 500 340.98541 500 250 C 500 111.92882 388.07118 -1.8947806e-14 250 0 z " id="ring"/>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="needle"
+       width="16"
+       height="80"
+       x="242"/>
+    <text
+       xml:space="preserve"
+       style="font-size:122.59261322px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica;-inkscape-font-specification:Helvetica"
+       x="250.01915"
+       y="845.31812"
+       id="text"><tspan
+         id="label"
+         x="250.01915"
+         y="292.95594">0</tspan></text>
+    <path
+       style="fill:#d5f6ff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="up"
+       d="m 294.75099,133.39225 -90.93056,0 45.46528,-78.748173 z"
+       transform="matrix(0.61903879,0,0,0.61903879,95.682477,91.16682)"
+       />
+    <path
+       transform="matrix(0.61903879,0,0,-0.61903879,95.682477,408.80767)"
+       d="m 294.75099,133.39225 -90.93056,0 45.46528,-78.748173 z"
+       id="dn"
+       style="fill:#d5f6ff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+</svg>
