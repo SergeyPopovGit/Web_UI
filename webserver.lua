@@ -91,3 +91,21 @@ local _ip
 _ip = wifi.sta.getip()
 print("Web server started, skt: "..webskt..", listening on ".._ip..":"..webport.."\r\n")
 print("Execute: net.close(webskt) to stop it.")
+
+
+	[[ Making header
+		respond(clt,"HTTP/1.1 200 OK\r\nServer: WiFiMCU\r\nContent-Type:text/html\r\n")
+		
+			-- add the content langht
+		if ret  then 
+		respond(clt,"Content-Length: "..tostring(string.len(ret)).."\r\n") 
+		else 
+			respond(clt,"Content-Length: 0\r\n") 
+		end 
+			
+		respond(clt,"Connection: Closed\r\n\r\n")
+		
+			--add the responce body
+		respond(clt,ret) 	
+		respond(clt,"\r\n\r\n") 
+		]]

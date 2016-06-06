@@ -14,8 +14,9 @@ if webskt < 0 then
 end
 
 http = {}
-get = ''
 http.debug = 1
+
+
 
 function respond(clt,str)
 	if str ~= nil then
@@ -41,7 +42,7 @@ function webrecv(clt, d)
 	
 	local ret, resp
 		--Detect Request type
-	http.method = string.match(d, "%u+ ")
+	http.method = string.match(d, "(%u+) .+\r\n")
 	dbg("HTTP Method", http.method)
 		--Detect connection type
 	http.connect = string.match(d,"Connection: (%l+%p+%l+)}")
@@ -78,14 +79,20 @@ function webrecv(clt, d)
 	------------------------------
 	end
 		--sent init line 
-	net.send(clt,"HTTP/1.1 200 OK\r\nServer: WiFiMCU\r\n)")
+	net.send(clt,"HTTP/1.1 200 OK\r\n")
 
 end
 
 	--send ansver fanction
-net.on(webskt,"sent", function(clt) 
-	net.send(clt,"Content-Type:text/html\r\nContent-Length: 0\r\nConnection: close\r\n\r\n")
-	--net.close(clt) print("Sent is ended close socket: "..clt)
+
+net.on(webskt,"sent", function(clt,len) 
+	net.send(clt,[[
+	Server: WiFiMCU
+	Content-Type:text/html
+	Connection: keep-alive
+	
+	
+	]])
 end)
 
 
